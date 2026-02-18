@@ -62,4 +62,16 @@ return
       }):map("<leader>uG")
     end,
   },
+  {
+    "mfussenegger/nvim-dap-python",
+    opts = {
+      justMyCode = false,
+    },
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    opts = {
+      enabled = false,
+    },
+  },
 }

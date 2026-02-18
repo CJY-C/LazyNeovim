@@ -9,3 +9,5 @@ opt.clipboard = "unnamedplus"
 -- chinese encoding
 opt.encoding = "utf-8"
 opt.fileencodings = "utf-8,ucs-bom,gbk,cp936,gb2312,gb18030,sjis"
+
+opt.termguicolors = true

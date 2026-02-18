@@ -1,6 +1,7 @@
 local is_linux = vim.loop.os_uname().sysname == "Linux"
+local is_disabled = true
 
-if not is_linux then
+if (not is_linux) or is_disabled then
   return {}
 end
 
