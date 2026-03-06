@@ -1,25 +1,42 @@
--- init.lua / lua/plugins/colorscheme.lua
-local is_linux = vim.loop.os_uname().sysname == "Linux"
+-- lua/plugins/colorscheme.lua
+local sysname = vim.loop.os_uname().sysname
+local is_linux = sysname == "Linux"
+local is_mac = sysname == "Darwin"
 
-if not is_linux then
-  return {}
+if is_linux then
+  return {
+    "itsfernn/auto-gnome-theme.nvim",
+    dependencies = {
+      "rose-pine/neovim",
+    },
+    config = function()
+      require("auto-gnome-theme").setup({
+        theme = "rose-pine",
+      })
+    end,
+  }
 end
 
-return {
-  "itsfernn/auto-gnome-theme.nvim",
-  -- Ensure your chosen themes are installed!
-  dependencies = {
-    -- "folke/tokyonight.nvim",
-    "rose-pine/neovim",
-  },
+if is_mac then
+  return {
+    "f-person/auto-dark-mode.nvim",
+    dependencies = {
+      "rose-pine/neovim",
+    },
+    config = function()
+      require("auto-dark-mode").setup({
+        update_interval = 3000,
+        set_dark_mode = function()
+          vim.o.background = "dark"
+          -- vim.cmd("colorscheme rose-pine")
+        end,
+        set_light_mode = function()
+          vim.o.background = "light"
+          -- vim.cmd("colorscheme rose-pine")
+        end,
+      })
+    end,
+  }
+end
 
-  -- Configuration runs after the plugin is loaded
-  config = function()
-    require("auto-gnome-theme").setup({
-      -- See Configuration section below
-      theme = "rose-pine",
-      -- dark_theme = "tokyonight",
-      -- light_theme = "rose-pine",
-    })
-  end,
-}
+return {}
