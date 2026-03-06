@@ -15,25 +15,29 @@ return
     vscode = false,
     ---@type Flash.Config
     opts = {},
-  -- stylua: ignore
+    -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, false },
-      { "<localleader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, false },
-      { "<localleader>S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",              mode = { "n", "x", "o" }, false },
+      { "<localleader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",              mode = { "n", "o", "x" }, false },
+      { "<localleader>S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",              mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",              mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>",          mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
       -- Simulate nvim-treesitter incremental selection
-      { "<c-space>", mode = { "n", "o", "x" },
+      {
+        "<c-space>",
+        mode = { "n", "o", "x" },
         function()
           require("flash").treesitter({
             actions = {
               ["<c-space>"] = "next",
               ["<BS>"] = "prev"
             }
-          }) 
-        end, desc = "Treesitter Incremental Selection" },
+          })
+        end,
+        desc = "Treesitter Incremental Selection"
+      },
     },
   },
   {
@@ -44,7 +48,7 @@ return
       -- { "<S-h>", mode = { "n", "x", "o" }, false },
       -- { "<S-l>", mode = { "n", "x", "o" }, false },
       { "<leader>bl", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
-      { "<leader>bh", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
+      { "<leader>bh", "<Cmd>BufferLineCloseLeft<CR>",  desc = "Delete Buffers to the Left" },
       { "<leader>br", false },
     },
   },
@@ -74,4 +78,22 @@ return
       enabled = false,
     },
   },
+  {
+    "stevearc/conform.nvim",
+    enabled = false
+  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   enabled = false,
+  -- },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       fish_lsp = {
+  --         enabled = false,
+  --       },
+  --     },
+  --   },
+  -- },
 }
