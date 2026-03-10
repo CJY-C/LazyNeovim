@@ -3,11 +3,20 @@ return {
   lazy = true,
   config = function()
     local gknapsettings = {
+      -- texoutputext = "pdf",
+      -- textopdf = "xelatex -synctex=1 -halt-on-error -interaction=batchmode %docroot%",
+      -- "sioyek --inverse-search 'nvim --headless -c \"lua require('\"'\"'knaphelper'\"'\"').relayjump('\"'\"'%servername%'\"'\"','\"'\"'%1'\"'\"',%2,%3)\"' --new-window %outputfile%",
+      -- textopdfviewerrefresh = "none",
+      -- textopdfforwardjump =
+      -- "sioyek --inverse-search 'nvim --headless -c \"lua require('\"'\"'knaphelper'\"'\"').relayjump('\"'\"'%servername%'\"'\"','\"'\"'%1'\"'\"',%2,%3)\"' --reuse-window --forward-search-file %srcfile% --forward-search-line %line% %outputfile%",
+
       texoutputext = "pdf",
       textopdf = "xelatex -synctex=1 -halt-on-error -interaction=batchmode %docroot%",
-      textopdfviewerlaunch = "sioyek %outputfile%",
-      textopdfforwardjump = "sioyek --inverse-search 'nvim --headless -es --cmd \"lua require('\"'\"'knaphelper'\"'\"').relayjump('\"'\"'%servername%'\"'\"','\"'\"'%1'\"'\"',%2,%3)\"' --reuse-window --forward-search-file %srcfile% --forward-search-line %line% %outputfile%",
-      textopdfviewerrefresh = "kill -HUP %pid%",
+      textopdfviewerlaunch =
+      "sioyek --inverse-search 'nvr --servername \"'%servername%'\" --remote-silent +%2 \"%1\"' --new-window %outputfile%",
+      textopdfforwardjump =
+      "sioyek --inverse-search 'nvr --servername \"'%servername%'\" --remote-silent +%2 \"%1\"' --reuse-window --forward-search-file %srcfile% --forward-search-line %line% %outputfile%",
+      textopdfviewerrefresh = "none",
     }
     vim.g.knap_settings = gknapsettings
     local kmap = vim.keymap.set
